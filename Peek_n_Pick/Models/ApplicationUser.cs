@@ -8,5 +8,6 @@ namespace Peek_n_Pick.Models
 {
     public class ApplicationUser : IdentityUser
     {
+
     }
 }

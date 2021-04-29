@@ -1,7 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="TypeConfigurations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Peek_n_Pick.DAL.Core\Peek_n_Pick.DAL.Core.csproj" />
+    <ProjectReference Include="..\Peek_n_Pick\Peek_n_Pick.csproj" />
+  </ItemGroup>
 
 </Project>
