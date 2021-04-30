@@ -10,12 +10,12 @@ namespace Peek_n_Pick.DAL.Core.Interfaces
     {
         Task AddAsync(T newT);
         Task AddManyAsync(IEnumerable<T> newTs);
-        Task GetByIdAsync(int id, bool withRelated = false);
-        Task GetAllAsync(bool withRelated = false);
-        Task UpdateAsync(T updatedT);
-        Task UpdateManyAsync(IEnumerable<T> updatedTs);
-        Task DeleteAsync(int id, bool withRelated = false);
-        Task DeleteManyAsync(IEnumerable<T> deletedTs, bool withRelated = false);
+        Task<T> GetByIdAsync(int id, bool withRelated = false);
+        Task<IEnumerable<T>> GetAllAsync(bool withRelated = false);
+        void Update(T updatedT);
+        void UpdateMany(IEnumerable<T> updatedTs);
+        void Delete(int id, bool withRelated = false);
+        void DeleteMany(IEnumerable<T> deletedTs, bool withRelated = false);
         Task<bool> CommitAsync();
 
 

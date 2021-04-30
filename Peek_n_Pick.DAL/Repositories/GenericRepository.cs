@@ -1,4 +1,5 @@
-﻿using Peek_n_Pick.DAL.Core.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using Peek_n_Pick.DAL.Core.Interfaces;
 using Peek_n_Pick.Data;
 using System;
 using System.Collections.Generic;
@@ -31,34 +32,39 @@ namespace Peek_n_Pick.DAL.Repositories
             return await context.SaveChangesAsync() > 0;
         }
 
-        public Task DeleteAsync(int id, bool withRelated = false)
+        public void Delete(int id, bool withRelated = false)
         {
-            throw new NotImplementedException();
+            var deletedT = context.Set<T>().Find(id);
+
+            context.Set<T>().Remove(deletedT);
         }
 
-        public Task DeleteManyAsync(IEnumerable<T> deletedTs, bool withRelated = false)
+        public void DeleteMany(IEnumerable<T> deletedTs, bool withRelated = false)
         {
-            throw new NotImplementedException();
+            context.RemoveRange(deletedTs);
         }
 
-        public Task GetAllAsync(bool withRelated = false)
+        public async Task<IEnumerable<T>> GetAllAsync(bool withRelated = false)
         {
-            throw new NotImplementedException();
+            return await context.Set<T>().ToListAsync();
         }
 
-        public Task GetByIdAsync(int id, bool withRelated = false)
+        public async Task<T> GetByIdAsync(int id, bool withRelated = false)
         {
-            throw new NotImplementedException();
+            return await context.Set<T>().FindAsync(id);
         }
 
-        public Task UpdateAsync(T updatedT)
+        public void Update(T updatedT)
         {
-            throw new NotImplementedException();
+            context.Entry(updatedT).State = EntityState.Modified;
         }
 
-        public Task UpdateManyAsync(IEnumerable<T> updatedTs)
+        public void UpdateMany(IEnumerable<T> updatedTs)
         {
-            throw new NotImplementedException();
+            foreach(var entity in updatedTs)
+            {
+                context.Entry(entity).State = EntityState.Modified;
+            }
         }
     }
 }
