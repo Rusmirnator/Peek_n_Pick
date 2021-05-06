@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Peek_n_Pick.DAL.Core.Interfaces;
-using Peek_n_Pick.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +10,9 @@ namespace Peek_n_Pick.DAL.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly ApplicationDbContext context;
+        private readonly Peek_n_PickDbContext.Peek_n_PickDbContext context;
 
-        public GenericRepository(ApplicationDbContext context)
+        public GenericRepository(Peek_n_PickDbContext.Peek_n_PickDbContext context)
         {
             this.context = context;
         }
