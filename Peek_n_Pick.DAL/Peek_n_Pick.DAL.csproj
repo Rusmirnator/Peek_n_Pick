@@ -9,8 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Peek_n_Pick.DAL.Core\Peek_n_Pick.DAL.Core.csproj" />
-    <ProjectReference Include="..\Peek_n_Pick\Peek_n_Pick.csproj" />
   </ItemGroup>
 
 </Project>
